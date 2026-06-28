@@ -32,17 +32,28 @@
 </nav>
 
 <header class="wrap page-header">
-  <div class="eyebrow">Let's solve it</div>
-  <h1>Tell me what's holding your business back.</h1>
-  <p>The first step is understanding your actual problem. Fill out the form below with as much detail as you can, and I'll get back to you within 24 hours with thoughts on whether I can help and what it would cost.</p>
+  <div class="eyebrow">Get in touch</div>
+  <h1>Tell us what's broken in your business.</h1>
+  <p>The first step is understanding your actual problem. Fill out the form below with as much detail as you can, and we'll get back to you within 24 hours with thoughts on whether we can help and what it would cost.</p>
 </header>
 
 <section class="wrap section">
   <div class="contact-grid">
     <div class="reveal">
+      <div id="package-indicator" class="hidden">
+        <span class="tag tag-real"><i class="ti ti-package" aria-hidden="true"></i> <span id="package-label"></span></span>
+      </div>
       <div class="contact-info-item">
         <i class="ti ti-mail" aria-hidden="true"></i>
         <div><h4>Email</h4><p>hello@viq.tech</p></div>
+      </div>
+      <div class="contact-info-item">
+        <i class="ti ti-phone" aria-hidden="true"></i>
+        <div><h4>Phone</h4><p>+254 114 086 112</p></div>
+      </div>
+      <div class="contact-info-item">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+        <div><h4>WhatsApp</h4><p><a href="https://wa.me/254114086112" style="color:var(--teal);text-decoration:underline;">+254 114 086 112</a></p></div>
       </div>
       <div class="contact-info-item">
         <i class="ti ti-clock" aria-hidden="true"></i>
@@ -50,12 +61,13 @@
       </div>
       <div class="contact-info-item">
         <i class="ti ti-credit-card" aria-hidden="true"></i>
-          <div><h4>Payment</h4><p>M-Pesa for local clients · Payoneer / PayPal / Stripe for international</p></div>
+        <div><h4>Payment</h4><p>M-Pesa for local clients · Payoneer / PayPal / Stripe for international</p></div>
       </div>
     </div>
 
     <div class="form-card reveal">
       <form id="contact-form">
+        <input type="hidden" id="package" name="package" value="">
         <div class="field-row">
           <div class="field">
             <label for="name">Your name</label>
@@ -91,7 +103,7 @@
       <div class="form-success" id="form-success">
         <i class="ti ti-circle-check" aria-hidden="true"></i>
         <h3>Got it</h3>
-        <p>Thanks — I'll review your problem and get back to you within 24 hours with thoughts on how I can help.</p>
+        <p>Thanks — we'll review your problem and get back to you within 24 hours with thoughts on how we can help.</p>
       </div>
     </div>
   </div>
@@ -103,11 +115,6 @@
       <div>
         <a href="index.html" class="footer-logo"><img src="assets/viq-tech-logo-wordmark-light.svg" alt="Viq.tech"></a>
         <p class="footer-tag">Websites, systems, software, and AI tools — designed, built, and personally maintained.</p>
-        <div class="social-row" style="margin-top:20px;">
-          <a href="https://github.com" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
-          <a href="https://linkedin.com" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
-          <a href="mailto:hello@viq.tech" aria-label="Email"><i class="ti ti-mail" aria-hidden="true"></i></a>
-        </div>
       </div>
       <div>
         <h5>Sitemap</h5>
@@ -133,8 +140,6 @@
   </div>
 </footer>
 
-<!-- This form is front-end only for the mockup. Wire the submit handler in js/main.js
-     to Formspree, EmailJS, or a backend endpoint to receive real submissions. -->
 <script src="js/main.js"></script>
 </body>
 </html>
