@@ -1,24 +1,38 @@
 # Viq Systems
 
-Viq Systems is a custom software and AI solutions agency site with a React/Vite frontend, a FastAPI backend, and a legacy static implementation kept as the content and design reference.
+Custom software, business systems, and AI tools for growing businesses.
 
-## Structure
+| Layer | Stack | Target |
+|-------|-------|--------|
+| **Frontend** | React 19 + Vite 8 | Cloudflare Pages |
+| **Backend** | FastAPI + Pydantic v2 | Cloudflare Workers |
+| **Design** | Space Grotesk, Inter, JetBrains Mono | Warm off-white, teal, terracotta |
 
-- `frontend/`: Active React frontend for Cloudflare Pages.
-- `backend/`: FastAPI backend intended for Cloudflare Workers via Pyodide / `pywrangler`.
-- `legacy-html/`: Read-only design, copy, and interaction reference.
+## Quick start
 
-## Frontend Notes
+```bash
+# Frontend
+cd frontend && npm install && npm run dev     # localhost:5173
 
-- The frontend mirrors the legacy multi-page structure: home, services, work, about, and contact.
-- The frontend is self-contained and does not depend on `legacy-html/` at runtime.
-- Visual language stays close to the legacy site: warm off-white surfaces, teal primary color, terracotta accents, and the current Viq Systems assets.
-- Contact forms are wired for Web3Forms during the initial phase.
-- The public-facing brand is `Viq Systems` and the domain is `viqsystems.tech`.
+# Backend (separate terminal)
+cd backend && python3 -m venv .venv            # one-time
+source .venv/bin/activate
+pip install -e '.[dev]'
+uvicorn app.main:app --reload                  # localhost:8000
+```
 
-## Commands
+## What's here
 
-- `cd frontend && npm install`
-- `cd frontend && npm run dev`
-- `cd frontend && npm run build`
-- `cd frontend && npm run lint`
+```
+frontend/       Active marketing site (multi-page SPA)
+backend/        API — health, version, and contact intake
+```
+
+## Contact
+
+Forms use **Web3Forms** until the backend endpoint takes over.  
+Set `VITE_WEB3FORMS_ACCESS_KEY` in your frontend env to enable submissions.
+
+## Domain
+
+`viqsystems.tech` — the public-facing brand.
