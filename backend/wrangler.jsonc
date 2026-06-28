@@ -1,0 +1,6 @@
+{
+  "name": "viq-systems-backend",
+  "main": "app/main.py",
+  "compatibility_date": "2026-06-28"
+}
+

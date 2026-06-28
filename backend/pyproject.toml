@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "viq-systems-backend"
+version = "0.1.0"
+description = "FastAPI backend for Viq Systems"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.136,<1.0",
+  "pydantic>=2.13,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28,<1.0",
+  "pytest>=8,<9",
+  "uvicorn>=0.46,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

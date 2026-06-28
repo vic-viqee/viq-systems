@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 156" width="242" height="156" role="img" aria-label="Viq.tech logo">
-<title>Viq.tech</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Viq Systems monogram">
+<title>Viq Systems monogram</title>
 <defs>
 <style>
 @font-face {
@@ -11,5 +11,6 @@ font-style: normal;
 text { font-family: 'Space Grotesk Logo', Arial, sans-serif; font-weight: 500; }
 </style>
 </defs>
-<text x="17.5" y="111" font-size="128" fill="#1E2937">Viq<tspan fill="#E07A5F">.</tspan></text>
+<rect width="200" height="200" rx="40" fill="#0F766E"/>
+<text x="105.5" y="139.4" font-size="108" fill="#F8FAFC" text-anchor="middle">V<tspan fill="#E07A5F">.</tspan></text>
 </svg>
