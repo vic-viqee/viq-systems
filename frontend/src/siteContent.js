@@ -1,9 +1,9 @@
 export const navItems = [
-  { href: '/index.html', label: 'Home', page: 'home' },
-  { href: '/work.html', label: 'Work', page: 'work' },
-  { href: '/services.html', label: 'Services', page: 'services' },
-  { href: '/about.html', label: 'About', page: 'about' },
-  { href: '/contact.html', label: 'Contact', page: 'contact' },
+  { href: '/', label: 'Home', page: 'home' },
+  { href: '/work', label: 'Work', page: 'work' },
+  { href: '/services', label: 'Services', page: 'services' },
+  { href: '/about', label: 'About', page: 'about' },
+  { href: '/contact', label: 'Contact', page: 'contact' },
 ]
 
 export const pageMeta = {
@@ -308,14 +308,80 @@ export const faqItems = [
   },
 ]
 
+export const fluxPayCaseStudy = {
+  slug: 'fluxpay',
+  tag: 'Live project',
+  title: 'FluxPay',
+  industry: 'Fintech / Payments',
+  services: ['M-Pesa Integration', 'Recurring Billing', 'Payment Dashboard', 'API Development'],
+  timeline: '8 Weeks',
+  technologies: ['React', 'Node.js', 'Daraja API', 'PostgreSQL', 'Docker'],
+  metrics: [
+    { label: '99.9%', value: 'Uptime' },
+    { label: '<2s', value: 'API Response' },
+    { label: 'Zero', value: 'Manual Reconciliation' },
+  ],
+  challenge: {
+    headline: 'M-Pesa Integration Is a Bottleneck',
+    points: [
+      'Building Daraja API integration from scratch takes 6-8 weeks per project',
+      'Recurring billing logic (STK Push, C2B callbacks, B2C payouts) is error-prone',
+      'Manual reconciliation across M-Pesa, card, and bank transfers wastes hours weekly',
+      'No standardized way to handle failed transactions, timeouts, or disputes'
+    ]
+  },
+  solution: {
+    phases: [
+      { week: 'Week 1-2', title: 'Discovery & Architecture', details: 'Mapped M-Pesa flow: STK Push for checkout, C2B for confirmations, B2C for refunds. Designed idempotent webhook handlers.' },
+      { week: 'Week 3-4', title: 'Core Payment Engine', details: 'Built transaction orchestration layer with state machine (pending → confirmed → completed/failed). Added retry logic with exponential backoff.' },
+      { week: 'Week 5-6', title: 'Dashboard & Reconciliation', details: 'Real-time admin dashboard: live transaction feed, automated daily reconciliation reports, failed transaction queue with manual override.' },
+      { week: 'Week 7-8', title: 'Testing, Hardening & Launch', details: 'Load tested 10k req/min. Added circuit breakers, rate limiting, audit logs. Deployed to AWS with CloudFront CDN.' }
+    ]
+  },
+  results: {
+    before: [
+      '6-8 weeks to build M-Pesa integration per project',
+      'Manual CSV reconciliation every Friday after every month-end',
+      'Failed transactions lost in callback noise',
+      'No visibility into payment health'
+    ],
+    after: [
+      'Integration ready in days via FluxPay SDK',
+      'Automated daily reconciliation, zero manual work',
+      'Failed transaction queue with auto-retry + alerts',
+      'Real-time dashboard: success rate, volume, latency'
+    ],
+    metrics: [
+      '99.9% uptime since launch',
+      '<2s median API response time',
+      'Zero manual reconciliation hours',
+      '3 production incidents in 18 months (all auto-recovered)'
+    ]
+  },
+  testimonial: {
+    quote: "FluxPay eliminated the single biggest technical risk in our product roadmap. What used to take two months now takes two days. The dashboard alone saves our finance team 20 hours a month.",
+    author: 'CTO, Fintech Startup (Kenya)',
+    company: 'Fintech Startup (Kenya)',
+    avatar: '/images/work/fluxpay-testimonial.svg'
+  },
+  liveUrl: 'https://fluxpay-frontend.onrender.com/',
+  repoUrl: null,
+  featuredImage: '/images/work/fluxpay-hero.png',
+  gallery: [
+    '/images/work/fluxpay-dashboard.png',
+    '/images/work/fluxpay-checkout.png',
+    '/images/work/fluxpay-reconciliation.png'
+  ]
+}
+
 export const realWork = [
   {
-    tag: 'Live project',
-    title: 'FluxPay',
+    ...fluxPayCaseStudy,
     visual: 'credit-card',
     gradient: 'teal',
     text: 'A payment platform that handles M-Pesa collections and recurring billing automatically, so a business does not have to build the integration itself.',
     href: 'https://fluxpay-frontend.onrender.com/',
+    metrics: ['99.9% Uptime', '<2s API Response', 'Zero Manual Reconciliation'],
   },
 ]
 

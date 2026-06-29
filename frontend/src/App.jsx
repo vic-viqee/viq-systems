@@ -16,15 +16,25 @@ import {
   services,
   standards,
 } from './siteContent'
+import WorkCaseStudy from './pages/WorkCaseStudy'
 import './App.css'
 
 const PATH_TO_PAGE = {
   '/': 'home',
   '/index.html': 'home',
+  '/services': 'services',
   '/services.html': 'services',
+  '/work': 'work',
   '/work.html': 'work',
+  '/about': 'about',
   '/about.html': 'about',
+  '/contact': 'contact',
   '/contact.html': 'contact',
+}
+
+function getSlugFromSearch() {
+  const params = new URLSearchParams(window.location.search)
+  return params.get('slug') || ''
 }
 
 function resolvePage(pathname) {
@@ -62,8 +72,16 @@ function useReveal() {
   }, [])
 }
 
-function useDocumentMeta(page) {
+function useDocumentMeta(page, caseProject) {
   useEffect(() => {
+    if (page === 'case-study' && caseProject) {
+      document.title = `${caseProject.title} Case Study - Viq Systems`
+      const description = document.querySelector('meta[name="description"]')
+      if (description) {
+        description.setAttribute('content', `${caseProject.services.join(', ')} — ${caseProject.industry} case study by Viq Systems.`)
+      }
+      return
+    }
     const meta = pageMeta[page] ?? pageMeta.home
     document.title = meta.title
 
@@ -71,7 +89,7 @@ function useDocumentMeta(page) {
     if (description) {
       description.setAttribute('content', meta.description)
     }
-  }, [page])
+  }, [page, caseProject])
 }
 
 function getPackageFromSearch() {
@@ -85,8 +103,12 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
+  const caseSlug = page === 'work' ? getSlugFromSearch() : ''
+  const caseProject = caseSlug ? realWork.find((p) => p.slug === caseSlug) : null
+  const effectivePage = caseProject ? 'case-study' : page
+
   useReveal()
-  useDocumentMeta(page)
+  useDocumentMeta(effectivePage, caseProject)
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -115,7 +137,10 @@ function App() {
   const packageLabel = packageSlug ? packageLabels[packageSlug] : ''
 
   let pageContent
-  switch (page) {
+  switch (effectivePage) {
+    case 'case-study':
+      pageContent = <WorkCaseStudy slug={caseSlug} />
+      break
     case 'services':
       pageContent = <ServicesPage />
       break
@@ -463,9 +488,16 @@ function WorkPage() {
               <span className="tag tag-live">{item.tag}</span>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-              <a href={item.href} className="btn btn-outline" target="_blank" rel="noreferrer">
-                View live demo
-              </a>
+              <div className="case-links">
+                <a href={item.href} className="btn btn-outline btn-sm" target="_blank" rel="noreferrer">
+                  View live demo
+                </a>
+                {item.slug && (
+                  <a href={`/work.html?slug=${item.slug}`} className="btn btn-ghost btn-sm">
+                    Read case study
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}
@@ -650,60 +682,49 @@ function ContactPage({ packageSlug, packageLabel }) {
 function ContactForm({ packageSlug }) {
   const formRef = useRef(null)
   const [status, setStatus] = useState({ type: 'idle', message: '' })
-  const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
+  const apiUrl =
+    import.meta.env.VITE_API_URL || 'https://viq-systems-backend.victorlewismurimi.workers.dev'
 
   async function handleSubmit(event) {
     event.preventDefault()
 
     const form = formRef.current
-    if (!form) {
-      return
-    }
-
-    if (!accessKey) {
-      setStatus({
-        type: 'error',
-        message: 'Set VITE_WEB3FORMS_ACCESS_KEY in the frontend environment to enable form submissions.',
-      })
-      return
-    }
+    if (!form) return
 
     setStatus({ type: 'loading', message: 'Sending your message...' })
 
     const formData = new FormData(form)
     const payload = {
-      access_key: accessKey,
-      subject: 'New Viq Systems enquiry',
-      from_name: String(formData.get('name') || 'Website visitor'),
-      from_email: String(formData.get('email') || ''),
-      package: String(formData.get('package') || ''),
-      business: String(formData.get('business') || ''),
-      problem: String(formData.get('problem') || ''),
-      impact: String(formData.get('impact') || ''),
-      timeline: String(formData.get('timeline') || ''),
-      message: `Business: ${String(formData.get('business') || '')}\n\nProblem: ${String(formData.get('problem') || '')}\n\nImpact: ${String(formData.get('impact') || '')}\n\nTimeline: ${String(formData.get('timeline') || '')}`,
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      business: String(formData.get('business') || '').trim(),
+      problem: String(formData.get('problem') || '').trim(),
+      impact: String(formData.get('impact') || '').trim(),
+      timeline: String(formData.get('timeline') || '').trim(),
+      package: String(formData.get('package') || '').trim() || undefined,
     }
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(`${apiUrl}/contact`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
 
       const result = await response.json()
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Form submission failed.')
+      if (!response.ok) {
+        const errMsg =
+          result.errors?.map((e) => e.message).join(', ') ||
+          result.error ||
+          'Form submission failed.'
+        throw new Error(errMsg)
       }
 
       form.reset()
       setStatus({
         type: 'success',
-        message: 'Thanks. We will review your problem and get back to you within 24 hours.',
+        message: result.message || 'Thanks. We will review your problem and get back to you within 24 hours.',
       })
     } catch (error) {
       setStatus({
@@ -714,11 +735,28 @@ function ContactForm({ packageSlug }) {
     }
   }
 
+  function handleReset() {
+    setStatus({ type: 'idle', message: '' })
+  }
+
+  if (status.type === 'success') {
+    return (
+      <div className="form-success">
+        <div className="form-success-icon">
+          <i className="ti ti-circle-check" aria-hidden="true" />
+        </div>
+        <h3 className="form-success-title">Message sent successfully</h3>
+        <p className="form-success-message">{status.message}</p>
+        <button type="button" className="btn btn-outline" onClick={handleReset}>
+          <i className="ti ti-arrow-back" aria-hidden="true" /> Send another message
+        </button>
+      </div>
+    )
+  }
+
   return (
     <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
-      <input type="hidden" name="access_key" value={accessKey} />
       <input type="hidden" name="package" value={packageSlug} />
-      <input type="hidden" name="subject" value="New Viq Systems enquiry" />
 
       <div className="field-grid">
         <label className="field">
@@ -778,8 +816,8 @@ function ContactForm({ packageSlug }) {
         <p className={`form-status form-status--${status.type}`}>{status.message}</p>
       ) : (
         <p className="form-hint">
-          Initial submissions use Web3Forms. If the access key is not configured yet, the form
-          will tell you what is missing.
+          All submissions are reviewed within 24 hours. We will get back to you with thoughts
+          on whether we can help and what it would cost.
         </p>
       )}
     </form>
