@@ -164,6 +164,15 @@ function App() {
       <SiteHeader page={page} menuOpen={menuOpen} scrolled={scrolled} setMenuOpen={setMenuOpen} />
       <main>{pageContent}</main>
       <SiteFooter />
+      <a
+        href="https://wa.me/254114086112"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-float"
+        aria-label="Chat on WhatsApp"
+      >
+        <i className="ti ti-brand-whatsapp" />
+      </a>
     </div>
   )
 }
