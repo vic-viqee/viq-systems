@@ -1,0 +1,2 @@
+# Cloudflare automatically strips .html extensions — no manual redirects needed.
+# This file exists to reserve the path and prevent 404s for any future rules.

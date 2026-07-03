@@ -4,9 +4,9 @@ import {
   contactMethods,
   conceptWork,
   faqItems,
-  homeCapabilities,
   homeProblems,
-  homeProcess,
+  howItWorks,
+  solveTogether,
   navItems,
   packageLabels,
   pageMeta,
@@ -236,9 +236,6 @@ function HomePage() {
             problem.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="/contact.html">
-              Tell us your problem
-            </a>
             <a
               className="btn btn-outline"
               href="https://wa.me/254114086112?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
@@ -256,98 +253,57 @@ function HomePage() {
             <i className="ti ti-sparkles" aria-hidden="true" />
             Hand-crafted digital systems for growing businesses
           </div>
-          <div className="hero-meta">
-            <div>
-              <strong>Discovery</strong>
-              <span>Find the real bottleneck</span>
-            </div>
-            <div>
-              <strong>Build</strong>
-              <span>Custom software that fits your workflow</span>
-            </div>
-            <div>
-              <strong>Results</strong>
-              <span>Time saved, friction removed, revenue recovered</span>
-            </div>
-          </div>
         </div>
-
-        <aside className="hero-panel">
-          <div className="panel-label">What we&apos;re building now</div>
-          <article className="project-card">
-            <div className="project-visual project-visual--teal">
-              <i className="ti ti-credit-card" aria-hidden="true" />
-            </div>
-            <div className="project-body">
-              <span className="tag tag-live">Live project</span>
-              <h3>FluxPay</h3>
-              <p>
-                A payment platform that handles M-Pesa collections and recurring billing
-                automatically, so a business does not have to build the integration itself.
-              </p>
-              <a className="project-link" href="https://fluxpay-frontend.onrender.com/" target="_blank" rel="noreferrer">
-                See it live <i className="ti ti-external-link" aria-hidden="true" />
-              </a>
-            </div>
-          </article>
-        </aside>
       </section>
 
       <SectionHeading
-        eyebrow="How we solve problems"
-        title="A straightforward process to find the bottleneck and remove it."
-        description="We keep the process simple on purpose. The value is in the outcome, not the ceremony."
+        eyebrow="What we solve together"
+        title="The problems we help businesses fix."
+        description="If one of these feels familiar, we have probably built a solution for it before."
       />
 
-      <section className="wrap grid grid-3" data-reveal>
-        {homeProcess.map((item) => (
-          <article key={item.title} className="surface card">
+      <section className="wrap solve-grid" data-reveal>
+        {solveTogether.map((item) => (
+          <article key={item.title} className="solve-card">
+            <i className={`${item.icon} solve-icon`} aria-hidden="true" />
+            <div className="solve-content">
+              <p className="solve-problem">{item.title}</p>
+              <p className="solve-solution">{item.solution}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <SectionHeading
+        eyebrow="How It Works"
+        title="From problem to solution in four steps."
+        description="No fluff, no long proposals. Just a clear path from identifying the issue to getting a working system."
+      />
+
+      <section className="wrap how-steps" data-reveal>
+        {howItWorks.map((item) => (
+          <article key={item.step} className="how-step">
+            <div className="how-step-number">{item.step}</div>
             <i className={item.icon} aria-hidden="true" />
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </section>
-
-      <SectionHeading
-        eyebrow="Core capabilities"
-        title="Specific tools and integrations we use to solve business problems."
-        description="The stack stays invisible. The business result is what matters."
-      />
-
-      <section className="wrap grid grid-4 capabilities" data-reveal>
-        {homeCapabilities.map((item) => (
-          <article key={item.title} className="surface capability">
-            <div className="capability-icon">
-              <i className={item.icon} aria-hidden="true" />
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </section>
-
-      <SectionHeading
-        eyebrow="Problem examples"
-        title="The kinds of problems we help businesses solve."
-        description="These are real patterns. If one feels familiar, we probably know how to address it."
-      />
-
-      <section className="wrap grid grid-3 problems" data-reveal>
-        {homeProblems.map((item) => (
-          <article key={item.title} className="problem-card">
-            <div className={`problem-visual problem-visual--${visualTone(item.icon)}`}>
-              <i className={item.icon} aria-hidden="true" />
-            </div>
-            <div className="surface problem-body">
-              <span className="tag tag-problem">Problem type</span>
+            <div className="how-step-body">
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-              <p className="solution-line">Solution: {item.solution}</p>
             </div>
           </article>
         ))}
       </section>
+
+      <div className="wrap how-cta" data-reveal>
+        <a
+          className="btn btn-primary"
+          href="https://wa.me/254114086112?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="ti ti-brand-whatsapp" aria-hidden="true" />
+          Start on WhatsApp
+        </a>
+      </div>
 
       <CtaBanner
         title="What problem are you trying to solve?"

@@ -134,10 +134,7 @@
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 4.5rem;
-  align-items: center;
+  display: block;
 }
 
 .hero-copy h1,
@@ -147,10 +144,6 @@
   line-height: 1.04;
   letter-spacing: -0.045em;
   margin: 0.25rem 0 1rem;
-}
-
-.hero-copy h1 {
-  max-width: 11ch;
 }
 
 .hero-copy h1 span {
@@ -189,55 +182,143 @@
   color: var(--teal);
 }
 
-.hero-meta {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.875rem;
-  margin-top: 1.35rem;
-  max-width: 35rem;
-}
-
-.hero-meta div,
 .surface {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(254, 252, 248, 0.96), rgba(255, 255, 255, 0.92));
 }
 
-.hero-meta div {
-  padding: 0.95rem 1rem;
-}
-
-.hero-meta strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--charcoal);
-  font-weight: 500;
-  margin-bottom: 0.35rem;
-}
-
-.hero-meta span {
-  display: block;
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--muted);
-}
-
-.hero-panel {
+/* What we solve together */
+.solve-grid {
   display: grid;
-  gap: 0.7rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
 }
 
-.panel-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.solve-card {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 1.15rem 1.25rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(254, 252, 248, 0.96), rgba(255, 255, 255, 0.92));
+  box-shadow: 0 12px 28px -30px rgba(30, 41, 55, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.solve-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -24px rgba(30, 41, 55, 0.2);
+  border-color: rgba(15, 118, 110, 0.35);
+}
+
+.solve-icon {
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: rgba(15, 118, 110, 0.08);
   color: var(--teal);
+  font-size: 1.15rem;
 }
 
-.project-card,
+.solve-content {
+  min-width: 0;
+}
+
+.solve-problem {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+  line-height: 1.45;
+}
+
+.solve-solution {
+  font-size: 0.9rem;
+  color: var(--teal);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* How It Works */
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.5rem 1.35rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(254, 252, 248, 0.96), rgba(255, 255, 255, 0.92));
+  box-shadow: 0 18px 34px -38px rgba(30, 41, 55, 0.2);
+  position: relative;
+}
+
+.how-step-number {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.how-step i {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--teal);
+  font-size: 1.2rem;
+}
+
+.how-step h3 {
+  font-size: 1rem;
+  margin: 0 0 0.35rem;
+}
+
+.how-step p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+.solve-grid {
+  margin-bottom: 2.5rem;
+}
+
+.how-steps {
+  margin-bottom: 2rem;
+}
+
+.how-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .service-card,
 .case-card {
   overflow: hidden;
@@ -260,13 +341,6 @@
   border-color: rgba(15, 118, 110, 0.28);
 }
 
-.project-card {
-  display: grid;
-  grid-template-columns: 10rem minmax(0, 1fr);
-  min-height: 17rem;
-}
-
-.project-visual,
 .service-visual,
 .case-visual,
 .problem-visual {
@@ -275,12 +349,6 @@
   color: var(--paper);
 }
 
-.project-visual {
-  min-height: 100%;
-  font-size: 2.5rem;
-}
-
-.project-visual--teal,
 .service-visual--teal,
 .case-visual--teal,
 .problem-visual--teal {
@@ -314,7 +382,6 @@
   background: linear-gradient(160deg, var(--teal), var(--charcoal));
 }
 
-.project-body,
 .service-body,
 .case-body {
   padding: 1.2rem 1.25rem 1.3rem;
@@ -331,7 +398,6 @@
   flex-direction: column;
 }
 
-.project-body h3,
 .service-body h3,
 .case-body h3,
 .card h3,
@@ -342,7 +408,6 @@
   margin: 0.55rem 0 0.45rem;
 }
 
-.project-body p,
 .service-body p,
 .case-body p,
 .card p,
@@ -359,7 +424,6 @@
   color: var(--charcoal);
 }
 
-.project-link,
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -457,7 +521,6 @@
 .benchmark-card i,
 .value-card i,
 .contact-card i,
-.project-visual i,
 .service-visual i,
 .case-visual i,
 .problem-visual i {
@@ -544,6 +607,8 @@
 .section-heading + .service-stack,
 .section-heading + .pricing-grid,
 .section-heading + .benchmark-grid,
+.section-heading + .solve-grid,
+.section-heading + .how-steps,
 .section-heading + .faq-list,
 .section-heading + .work-stack,
 .section-heading + .contact-layout,
@@ -1222,11 +1287,6 @@
 }
 
 @media (max-width: 1000px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .section-heading {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -1313,14 +1373,6 @@
     gap: 1.5rem;
   }
 
-  .project-card {
-    grid-template-columns: 1fr;
-  }
-
-  .project-visual {
-    min-height: 9rem;
-  }
-
   .cta-banner,
   .note-block {
     flex-direction: column;
@@ -1329,6 +1381,14 @@
 
   .cta-banner {
     padding: 2rem 1.5rem;
+  }
+
+  .solve-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1366,15 +1426,12 @@
   .pricing-card,
   .contact-card,
   .form-card,
-  .project-body,
+  .solve-card,
+  .how-step,
   .service-body,
   .case-body,
   .problem-body {
     padding: 1rem;
-  }
-
-  .hero-meta {
-    grid-template-columns: 1fr;
   }
 
   .benchmark-grid {
@@ -1384,6 +1441,15 @@
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .how-step {
+    flex-direction: row;
+    align-items: center;
   }
 }
 

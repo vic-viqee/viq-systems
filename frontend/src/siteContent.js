@@ -113,6 +113,72 @@ export const homeProblems = [
   },
 ]
 
+export const solveTogether = [
+  {
+    icon: 'ti ti-calendar-event',
+    title: 'Clients keep forgetting bookings',
+    text: 'Service businesses lose revenue to no-shows because reminders are still manual.',
+    solution: 'Automated booking system with reminders and a client portal.',
+  },
+  {
+    icon: 'ti ti-receipt-2',
+    title: 'Accounting is a nightmare',
+    text: 'Payments land in M-Pesa, cash, transfers — month-end reconciliation takes days.',
+    solution: 'A single dashboard that consolidates every payment type.',
+  },
+  {
+    icon: 'ti ti-database',
+    title: 'Customer data is chaos',
+    text: 'Details scattered across WhatsApp, notes, and spreadsheets — follow-up gets lost.',
+    solution: 'A mini-CRM that centralises customer history.',
+  },
+  {
+    icon: 'ti ti-package',
+    title: 'Inventory is a guessing game',
+    text: 'Nobody knows what is in stock or what needs reordering next.',
+    solution: 'Inventory tracker with low-stock alerts and sales reports.',
+  },
+  {
+    icon: 'ti ti-brand-whatsapp',
+    title: 'WhatsApp orders are chaos',
+    text: 'Orders arrive in chat, but payment and delivery tracking gets messy fast.',
+    solution: 'Order management with auto-status and customer notifications.',
+  },
+  {
+    icon: 'ti ti-repeat',
+    title: 'Repetitive tasks eat your week',
+    text: 'Manual data entry, follow-ups, and status checks that should happen automatically.',
+    solution: 'Automated workflows that save hours every week.',
+  },
+]
+
+export const howItWorks = [
+  {
+    icon: 'ti ti-message',
+    step: 1,
+    title: 'Tell us what is broken',
+    text: 'Share the bottleneck, the frustration, or the manual process that is costing you time or money. No technical jargon needed.',
+  },
+  {
+    icon: 'ti ti-search',
+    step: 2,
+    title: 'We figure out the fix',
+    text: 'We look at the problem and design a solution. If a custom system is the right call, we tell you. If it is not, we tell you that too.',
+  },
+  {
+    icon: 'ti ti-code',
+    step: 3,
+    title: 'We build, test, and launch',
+    text: 'Custom software built around your workflow. No templates, no page builders, just working code that solves the specific problem.',
+  },
+  {
+    icon: 'ti ti-trending-up',
+    step: 4,
+    title: 'You get results',
+    text: 'Time saved, friction removed, revenue recovered. And we stay around to make sure it keeps working after launch.',
+  },
+]
+
 export const services = [
   {
     icon: 'ti ti-world',

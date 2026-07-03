@@ -1,6 +1,18 @@
 {
   "name": "viq-systems-backend",
-  "main": "app/main.py",
-  "compatibility_date": "2026-06-28"
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-06-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+  "vars": {
+    "APP_NAME": "Viq Systems API",
+    "APP_VERSION": "0.1.0",
+    "APP_ENV": "production",
+    "PUBLIC_SITE_URL": "https://viqsystems.tech",
+    "LEAD_EMAIL_TO": "victorlewismurimi@gmail.com"
+  }
 }
-
