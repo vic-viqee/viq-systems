@@ -16,6 +16,8 @@ import {
   services,
   standards,
 } from './siteContent'
+import PrivacyPage from './pages/Privacy'
+import TermsPage from './pages/Terms'
 import WorkCaseStudy from './pages/WorkCaseStudy'
 import './App.css'
 
@@ -30,6 +32,10 @@ const PATH_TO_PAGE = {
   '/about.html': 'about',
   '/contact': 'contact',
   '/contact.html': 'contact',
+  '/privacy': 'privacy',
+  '/privacy.html': 'privacy',
+  '/terms': 'terms',
+  '/terms.html': 'terms',
 }
 
 function getSlugFromSearch() {
@@ -152,6 +158,12 @@ function App() {
       break
     case 'contact':
       pageContent = <ContactPage packageSlug={packageSlug} packageLabel={packageLabel} />
+      break
+    case 'privacy':
+      pageContent = <PrivacyPage />
+      break
+    case 'terms':
+      pageContent = <TermsPage />
       break
     case 'home':
     default:
@@ -647,14 +659,78 @@ function ContactPage({ packageSlug, packageLabel }) {
 function ContactForm({ packageSlug }) {
   const formRef = useRef(null)
   const [status, setStatus] = useState({ type: 'idle', message: '' })
+  const [touched, setTouched] = useState({})
+  const [notSure, setNotSure] = useState(false)
   const apiUrl =
     import.meta.env.VITE_API_URL || 'https://viq-systems-backend.victorlewismurimi.workers.dev'
+
+  const requiredFields = ['name', 'email', 'business']
+
+  function validateField(name, value) {
+    if (!requiredFields.includes(name)) return ''
+    if (!value || !value.trim()) {
+      const labels = { name: 'Your name', email: 'Email', business: 'Your business' }
+      return `${labels[name] || name} is required`
+    }
+    if (name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      return 'Enter a valid email address'
+    }
+    return ''
+  }
+
+  function handleBlur(name) {
+    return (event) => {
+      setTouched((prev) => ({ ...prev, [name]: true }))
+      const input = event.target
+      input.setCustomValidity('')
+      const error = validateField(name, input.value)
+      if (error) input.setCustomValidity(error)
+    }
+  }
+
+  function handleChange(name) {
+    return (event) => {
+      if (!touched[name]) return
+      const input = event.target
+      input.setCustomValidity('')
+      const error = validateField(name, input.value)
+      if (error) input.setCustomValidity(error)
+    }
+  }
+
+  function getError(name) {
+    if (!touched[name]) return ''
+    const input = formRef.current?.elements[name]
+    if (!input) return ''
+    return validateField(name, input.value)
+  }
 
   async function handleSubmit(event) {
     event.preventDefault()
 
     const form = formRef.current
     if (!form) return
+
+    const fields = ['name', 'email', 'business']
+    const allTouched = {}
+    let hasError = false
+    fields.forEach((name) => {
+      allTouched[name] = true
+      const input = form.elements[name]
+      if (!input) return
+      input.setCustomValidity('')
+      const error = validateField(name, input.value)
+      if (error) {
+        input.setCustomValidity(error)
+        hasError = true
+      }
+    })
+    setTouched((prev) => ({ ...prev, ...allTouched }))
+
+    if (!form.checkValidity() || hasError) {
+      form.reportValidity()
+      return
+    }
 
     setStatus({ type: 'loading', message: 'Sending your message...' })
 
@@ -663,8 +739,8 @@ function ContactForm({ packageSlug }) {
       name: String(formData.get('name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
       business: String(formData.get('business') || '').trim(),
-      problem: String(formData.get('problem') || '').trim(),
-      impact: String(formData.get('impact') || '').trim(),
+      problem: notSure ? '' : String(formData.get('problem') || '').trim(),
+      impact: notSure ? '' : String(formData.get('impact') || '').trim(),
       timeline: String(formData.get('timeline') || '').trim(),
       package: String(formData.get('package') || '').trim() || undefined,
     }
@@ -687,6 +763,8 @@ function ContactForm({ packageSlug }) {
       }
 
       form.reset()
+      setTouched({})
+      setNotSure(false)
       setStatus({
         type: 'success',
         message: result.message || 'Thanks. We will review your problem and get back to you within 24 hours.',
@@ -701,6 +779,8 @@ function ContactForm({ packageSlug }) {
   }
 
   function handleReset() {
+    setTouched({})
+    setNotSure(false)
     setStatus({ type: 'idle', message: '' })
   }
 
@@ -720,49 +800,79 @@ function ContactForm({ packageSlug }) {
   }
 
   return (
-    <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
+    <form ref={formRef} className="contact-form" onSubmit={handleSubmit} noValidate>
       <input type="hidden" name="package" value={packageSlug} />
 
       <div className="field-grid">
-        <label className="field">
+        <label className={`field ${getError('name') ? 'field--error' : ''}`}>
           <span>Your name</span>
-          <input name="name" type="text" required placeholder="Victor" />
+          <input
+            name="name"
+            type="text"
+            required
+            placeholder="Victor"
+            onBlur={handleBlur('name')}
+            onChange={handleChange('name')}
+          />
+          {getError('name') && <span className="field__error">{getError('name')}</span>}
         </label>
 
-        <label className="field">
+        <label className={`field ${getError('email') ? 'field--error' : ''}`}>
           <span>Email</span>
-          <input name="email" type="email" required placeholder="you@example.com" />
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            onBlur={handleBlur('email')}
+            onChange={handleChange('email')}
+          />
+          {getError('email') && <span className="field__error">{getError('email')}</span>}
         </label>
       </div>
 
-      <label className="field">
+      <label className={`field ${getError('business') ? 'field--error' : ''}`}>
         <span>What is your business / what do you do?</span>
         <input
           name="business"
           type="text"
           required
           placeholder="Salon, plumbing, e-commerce, training academy..."
+          onBlur={handleBlur('business')}
+          onChange={handleChange('business')}
         />
+        {getError('business') && <span className="field__error">{getError('business')}</span>}
       </label>
 
-      <label className="field">
-        <span>What is the biggest problem you are trying to solve?</span>
-        <textarea
-          name="problem"
-          required
-          placeholder="What takes up your time? What costs you money? What system is broken or outdated?"
-        />
-      </label>
-
-      <label className="field">
-        <span>What would solving this mean for your business?</span>
+      <label className="field field--checkbox">
         <input
-          name="impact"
-          type="text"
-          required
-          placeholder="5 extra hours per week, more leads, less stress..."
+          type="checkbox"
+          checked={notSure}
+          onChange={(e) => setNotSure(e.target.checked)}
         />
+        <span>I am not sure what the problem is yet — I want to explore ideas</span>
       </label>
+
+      {!notSure && (
+        <>
+          <label className="field">
+            <span>What is the biggest problem you are trying to solve?</span>
+            <textarea
+              name="problem"
+              placeholder="What takes up your time? What costs you money? What system is broken or outdated?"
+            />
+          </label>
+
+          <label className="field">
+            <span>What would solving this mean for your business?</span>
+            <input
+              name="impact"
+              type="text"
+              placeholder="5 extra hours per week, more leads, less stress..."
+            />
+          </label>
+        </>
+      )}
 
       <label className="field">
         <span>When do you need this solved?</span>
@@ -774,7 +884,7 @@ function ContactForm({ packageSlug }) {
       </label>
 
       <button type="submit" className="btn btn-primary btn-block" disabled={status.type === 'loading'}>
-        {status.type === 'loading' ? 'Sending...' : 'Send my problem'}
+        {status.type === 'loading' ? 'Sending...' : 'Send my message'}
       </button>
 
       {status.type !== 'idle' ? (
@@ -888,6 +998,10 @@ function SiteFooter() {
       </div>
       <div className="wrap footer-bottom">
         <span>© 2026 Viq Systems</span>
+        <span className="footer-legal-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </span>
         <span>Hand-crafted, not mass-produced</span>
       </div>
     </footer>

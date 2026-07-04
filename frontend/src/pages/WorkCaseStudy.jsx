@@ -1,6 +1,44 @@
+import { useEffect, useState } from 'react'
 import { realWork } from '../siteContent'
 
+function webpSrc(src) {
+  if (!src) return null
+  return src.replace(/\.(png|jpg|jpeg)$/, '.webp')
+}
+
+function Img({ src, alt, className }) {
+  const webp = webpSrc(src)
+  return (
+    <picture>
+      {webp && <source srcSet={webp} type="image/webp" />}
+      <img src={src} alt={alt} className={className} loading="lazy" />
+    </picture>
+  )
+}
+
+function Lightbox({ src, alt, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
+
+  return (
+    <div className="lightbox" onClick={onClose}>
+      <button className="lightbox__close" onClick={onClose} aria-label="Close">
+        <i className="ti ti-x" />
+      </button>
+      <img className="lightbox__img" src={src} alt={alt} onClick={(e) => e.stopPropagation()} />
+    </div>
+  )
+}
+
 export default function WorkCaseStudy({ slug }) {
+  const [lightboxIndex, setLightboxIndex] = useState(null)
   const projectData = realWork.find((p) => p.slug === slug)
 
   if (!projectData) {
@@ -93,7 +131,7 @@ export default function WorkCaseStudy({ slug }) {
       {featuredImage && (
         <section className="case-image">
           <div className="container">
-            <img src={featuredImage} alt={`${title} screenshot`} className="case-image__main" />
+            <Img src={featuredImage} alt={`${title} screenshot`} className="case-image__main" />
           </div>
         </section>
       )}
@@ -145,8 +183,8 @@ export default function WorkCaseStudy({ slug }) {
             </div>
             <div className="case-gallery__grid">
               {gallery.map((src, i) => (
-                <div key={i} className="case-gallery__item">
-                  <img src={src} alt={`${title} screenshot ${i + 1}`} />
+                <div key={i} className="case-gallery__item" onClick={() => setLightboxIndex(i)}>
+                  <Img src={src} alt={`${title} screenshot ${i + 1}`} />
                 </div>
               ))}
             </div>
@@ -200,7 +238,7 @@ export default function WorkCaseStudy({ slug }) {
             <blockquote className="case-testimonial__block">
               <p>{testimonial.quote}</p>
               <footer>
-                <img src={testimonial.avatar} alt={testimonial.author} width="48" height="48" />
+                <Img src={testimonial.avatar} alt={testimonial.author} />
                 <div>
                   <cite>{testimonial.author}</cite>
                   <span>{testimonial.company}</span>
@@ -219,6 +257,14 @@ export default function WorkCaseStudy({ slug }) {
           <a href="/contact.html" className="btn btn--primary">Get in Touch</a>
         </div>
       </section>
+
+      {lightboxIndex !== null && gallery && gallery[lightboxIndex] && (
+        <Lightbox
+          src={gallery[lightboxIndex]}
+          alt={`${title} screenshot ${lightboxIndex + 1}`}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </>
   )
 }

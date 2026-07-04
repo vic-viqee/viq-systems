@@ -16,6 +16,8 @@ export default defineConfig({
         work: resolve(rootDir, 'work.html'),
         about: resolve(rootDir, 'about.html'),
         contact: resolve(rootDir, 'contact.html'),
+        privacy: resolve(rootDir, 'privacy.html'),
+        terms: resolve(rootDir, 'terms.html'),
       },
     },
   },

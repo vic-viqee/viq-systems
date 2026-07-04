@@ -32,6 +32,16 @@ export const pageMeta = {
     description:
       'Start a project with Viq Systems using the contact form, WhatsApp, email, or phone.',
   },
+  privacy: {
+    title: 'Privacy Policy - Viq Systems',
+    description:
+      'Viq Systems privacy policy — how we collect, use, and protect your data.',
+  },
+  terms: {
+    title: 'Terms of Service - Viq Systems',
+    description:
+      'Viq Systems terms of service — conditions for using our website and services.',
+  },
 }
 
 export const homeProcess = [
