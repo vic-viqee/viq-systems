@@ -1,21 +1,6 @@
 import { useEffect, useState } from 'react'
 import { realWork } from '../siteContent'
 
-function webpSrc(src) {
-  if (!src) return null
-  return src.replace(/\.(png|jpg|jpeg)$/, '.webp')
-}
-
-function Img({ src, alt, className }) {
-  const webp = webpSrc(src)
-  return (
-    <picture>
-      {webp && <source srcSet={webp} type="image/webp" />}
-      <img src={src} alt={alt} className={className} loading="lazy" />
-    </picture>
-  )
-}
-
 function Lightbox({ src, alt, onClose }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -131,7 +116,7 @@ export default function WorkCaseStudy({ slug }) {
       {featuredImage && (
         <section className="case-image">
           <div className="container">
-            <Img src={featuredImage} alt={`${title} screenshot`} className="case-image__main" />
+            <img src={featuredImage} alt={`${title} screenshot`} className="case-image__main" loading="lazy" />
           </div>
         </section>
       )}
@@ -184,7 +169,7 @@ export default function WorkCaseStudy({ slug }) {
             <div className="case-gallery__grid">
               {gallery.map((src, i) => (
                 <div key={i} className="case-gallery__item" onClick={() => setLightboxIndex(i)}>
-                  <Img src={src} alt={`${title} screenshot ${i + 1}`} />
+                  <img src={src} alt={`${title} screenshot ${i + 1}`} loading="lazy" />
                 </div>
               ))}
             </div>
@@ -238,7 +223,7 @@ export default function WorkCaseStudy({ slug }) {
             <blockquote className="case-testimonial__block">
               <p>{testimonial.quote}</p>
               <footer>
-                <Img src={testimonial.avatar} alt={testimonial.author} />
+                <img src={testimonial.avatar} alt={testimonial.author} loading="lazy" />
                 <div>
                   <cite>{testimonial.author}</cite>
                   <span>{testimonial.company}</span>
