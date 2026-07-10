@@ -363,6 +363,41 @@ export const standards = [
 
 export const faqItems = [
   {
+    question: 'What is Viq Systems?',
+    answer:
+      'Viq Systems is a solo software development business based in Embu, Kenya, founded by Victor. We build custom websites, business systems, and AI tools for small and medium businesses that have outgrown WhatsApp, spreadsheets, and notebooks.',
+  },
+  {
+    question: 'Does Viq Systems do M-Pesa integration?',
+    answer:
+      'Yes. Viq Systems integrates M-Pesa Daraja API for STK Push, callbacks, and automated payment confirmations. M-Pesa integration costs KES 20,000–40,000 as an add-on to any project.',
+  },
+  {
+    question: 'How much does a custom website cost in Kenya?',
+    answer:
+      'A custom website from Viq Systems costs KES 30,000–120,000 depending on complexity. A simple landing page starts at KES 15,000. A business website with 3–5 pages is KES 30,000–60,000. Pricing is per project, not per hour.',
+  },
+  {
+    question: 'Where is Viq Systems located?',
+    answer:
+      'Viq Systems is based in Embu, Kenya. Victor works with local clients in Embu and Nairobi in-person, and international clients remotely.',
+  },
+  {
+    question: 'What makes Viq Systems different from other web developers in Kenya?',
+    answer:
+      'Viq Systems is a solo developer, not an agency. Victor builds every project personally and stays for ongoing maintenance. The approach is problem-first: every system starts with understanding what wastes the business\'s time, not deciding features first.',
+  },
+  {
+    question: 'Do you build systems for salons and barbershops?',
+    answer:
+      'Viq Systems focuses on businesses with clear operational pain: schools, wholesalers, transport companies, hotels, pharmacies, restaurants, cooperatives, SACCOs, and e-commerce shops. These businesses have higher budgets and measurable ROI from software.',
+  },
+  {
+    question: 'What is the payment structure?',
+    answer:
+      'Viq Systems requires 50% upfront before work begins, and 50% on launch day before handing over code or pushing to the client\'s domain. Kenyan clients pay via M-Pesa Till or bank transfer. International clients pay via Payoneer or PayPal.',
+  },
+  {
     question: 'I am not sure if my problem needs a custom system.',
     answer:
       'That is what the discovery call is for. We will tell you honestly whether a custom build makes sense or if something simpler would be a better fit.',
@@ -371,11 +406,6 @@ export const faqItems = [
     question: 'How long does a project usually take?',
     answer:
       'A simple booking system can take 2 to 4 weeks. A more complex system, like a dashboard or CRM with integrations, can take 4 to 8 weeks.',
-  },
-  {
-    question: 'Do you only work with Kenyan businesses?',
-    answer:
-      'No. The site is rooted in Kenya, but the workflow can support remote-friendly clients and international payment methods too.',
   },
   {
     question: 'Can you help after launch?',
