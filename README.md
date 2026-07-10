@@ -5,7 +5,7 @@ Custom software, business systems, and AI tools for growing businesses.
 | Layer | Stack | Target |
 |-------|-------|--------|
 | **Frontend** | React 19 + Vite 8 | Cloudflare Pages |
-| **Backend** | FastAPI + Pydantic v2 | Cloudflare Workers |
+| **Backend** | TypeScript Cloudflare Worker | Cloudflare Workers |
 | **Design** | Space Grotesk, Inter, JetBrains Mono | Warm off-white, teal, terracotta |
 
 ## Quick start
@@ -15,23 +15,20 @@ Custom software, business systems, and AI tools for growing businesses.
 cd frontend && npm install && npm run dev     # localhost:5173
 
 # Backend (separate terminal)
-cd backend && python3 -m venv .venv            # one-time
-source .venv/bin/activate
-pip install -e '.[dev]'
-uvicorn app.main:app --reload                  # localhost:8000
+cd backend && npm install && npx wrangler dev  # local dev with Cloudflare runtime
 ```
 
 ## What's here
 
 ```
 frontend/       Active marketing site (multi-page SPA)
-backend/        API — health, version, and contact intake
+backend/        Cloudflare Worker (contact intake, health, version)
 ```
 
 ## Contact
 
-Forms use **Web3Forms** until the backend endpoint takes over.  
-Set `VITE_WEB3FORMS_ACCESS_KEY` in your frontend env to enable submissions.
+Contact form submits to the Cloudflare Worker backend (`POST /contact`).  
+Set `VITE_API_URL` in your frontend env to override the backend URL.
 
 ## Domain
 
