@@ -2,6 +2,14 @@
 
 Custom software, business systems, and AI tools for growing businesses.
 
+## Live Demo
+
+- **Website**: [https://viqsystems.tech](https://viqsystems.tech)
+
+## About
+
+Viq Systems is a boutique software studio building custom business tools, AI-powered solutions, and web platforms for growing businesses. The site serves as the public-facing brand and contact portal, backed by a Cloudflare Worker for form submissions and health checks.
+
 | Layer | Stack | Target |
 |-------|-------|--------|
 | **Frontend** | React 19 + Vite 8 | Cloudflare Pages |
