@@ -52,5 +52,5 @@
 
 ## Contact
 - Website: https://viqsystems.tech
-- WhatsApp: +254 114 086 112
+- WhatsApp: +254 714 767 407
 - Email: hello@viqsystems.tech

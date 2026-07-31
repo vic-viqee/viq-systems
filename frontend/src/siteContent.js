@@ -592,14 +592,14 @@ export const contactMethods = [
   {
     icon: 'ti ti-phone',
     title: 'Phone',
-    value: '+254 114 086 112',
-    href: 'tel:+254114086112',
+    value: '+254 714 767 407',
+    href: 'tel:+254714767407',
   },
   {
     icon: 'ti ti-brand-whatsapp',
     title: 'WhatsApp',
-    value: '+254 114 086 112',
-    href: 'https://wa.me/254114086112',
+    value: '+254 714 767 407',
+    href: 'https://wa.me/254714767407',
   },
   {
     icon: 'ti ti-clock',

@@ -177,7 +177,7 @@ function App() {
       <main>{pageContent}</main>
       <SiteFooter />
       <a
-        href="https://wa.me/254114086112"
+        href="https://wa.me/254714767407"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
@@ -250,7 +250,7 @@ function HomePage() {
           <div className="hero-actions">
             <a
               className="btn btn-outline"
-              href="https://wa.me/254114086112?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
+              href="https://wa.me/254714767407?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
             >
@@ -308,7 +308,7 @@ function HomePage() {
       <div className="wrap how-cta" data-reveal>
         <a
           className="btn btn-primary"
-          href="https://wa.me/254114086112?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
+          href="https://wa.me/254714767407?text=Hi%20Viq%2C%20I%27m%20interested%20in%20your%20services%20and%20would%20like%20to%20discuss%20a%20project."
           target="_blank"
           rel="noreferrer"
         >
