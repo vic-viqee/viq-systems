@@ -741,6 +741,7 @@ function ContactForm({ packageSlug }) {
       business: String(formData.get('business') || '').trim(),
       problem: notSure ? '' : String(formData.get('problem') || '').trim(),
       impact: notSure ? '' : String(formData.get('impact') || '').trim(),
+      notSure: Boolean(notSure),
       timeline: String(formData.get('timeline') || '').trim(),
       package: String(formData.get('package') || '').trim() || undefined,
     }

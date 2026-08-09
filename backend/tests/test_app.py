@@ -70,3 +70,35 @@ def test_contact_rejects_invalid_email() -> None:
 
     assert response.status_code == 422
 
+
+def test_contact_accepts_not_sure_without_problem() -> None:
+    response = client.post(
+        "/contact",
+        json={
+            "name": "Victor",
+            "email": "victor@example.com",
+            "business": "Plumbing",
+            "problem": "",
+            "impact": "",
+            "not_sure": True,
+        },
+    )
+
+    assert response.status_code == 202
+    assert response.json()["status"] == "received"
+
+
+def test_contact_rejects_missing_problem_when_not_not_sure() -> None:
+    response = client.post(
+        "/contact",
+        json={
+            "name": "Victor",
+            "email": "victor@example.com",
+            "business": "Plumbing",
+            "problem": "",
+            "impact": "",
+        },
+    )
+
+    assert response.status_code == 422
+

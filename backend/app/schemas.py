@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
 
 class AppInfo(BaseModel):
@@ -33,17 +33,36 @@ class LeadCreate(BaseModel):
     name: str
     email: str
     business: str
-    problem: str
-    impact: str
+    problem: str | None = None
+    impact: str | None = None
     timeline: str = "Flexible, just exploring options"
     package: str | None = None
+    not_sure: bool = False
 
-    @field_validator("name", "business", "problem", "impact", "timeline")
+    @field_validator("name", "business", "timeline")
     @classmethod
     def ensure_non_empty(cls, value: str) -> str:
         if len(value) < 2:
             raise ValueError("Must be at least 2 characters long")
         return value
+
+    @field_validator("problem", "impact")
+    @classmethod
+    def ensure_non_empty_unless_exploring(cls, value: str | None) -> str | None:
+        if value is not None and value != "" and len(value) < 2:
+            raise ValueError("Must be at least 2 characters long")
+        return value
+
+    @model_validator(mode="after")
+    def require_problem_unless_exploring(self) -> "LeadCreate":
+        if not self.not_sure:
+            for field in ("problem", "impact"):
+                value = getattr(self, field)
+                if value is None or value == "":
+                    raise ValueError(
+                        f"{field}: Must be at least 2 characters long"
+                    )
+        return self
 
     @field_validator("email")
     @classmethod

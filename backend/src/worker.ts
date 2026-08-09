@@ -83,6 +83,9 @@ async function handlePost(request: Request, env: Env, cors: string): Promise<Res
   const lead = result.lead!;
   const intakeId = generateIntakeId();
   const receivedAt = new Date().toISOString();
+  const exploring = lead.notSure
+    ? "Not sure yet — exploring ideas"
+    : lead.problem || "Not specified";
 
   const emailHtml = [
     "<h2>New Contact Form Submission</h2>",
@@ -92,8 +95,8 @@ async function handlePost(request: Request, env: Env, cors: string): Promise<Res
     `<p><strong>Name:</strong> ${htmlEscape(lead.name)}</p>`,
     `<p><strong>Email:</strong> ${htmlEscape(lead.email)}</p>`,
     `<p><strong>Business:</strong> ${htmlEscape(lead.business)}</p>`,
-    `<p><strong>Problem:</strong> ${htmlEscape(lead.problem)}</p>`,
-    `<p><strong>Impact:</strong> ${htmlEscape(lead.impact)}</p>`,
+    `<p><strong>Problem:</strong> ${htmlEscape(exploring)}</p>`,
+    `<p><strong>Impact:</strong> ${htmlEscape(lead.notSure ? "Not sure yet — exploring ideas" : lead.impact || "Not specified")}</p>`,
     `<p><strong>Timeline:</strong> ${htmlEscape(lead.timeline)}</p>`,
     lead.package ? `<p><strong>Package:</strong> ${htmlEscape(lead.package)}</p>` : "",
     "<hr>",
@@ -108,8 +111,8 @@ async function handlePost(request: Request, env: Env, cors: string): Promise<Res
     `Name: ${lead.name}`,
     `Email: ${lead.email}`,
     `Business: ${lead.business}`,
-    `Problem: ${lead.problem}`,
-    `Impact: ${lead.impact}`,
+    `Problem: ${exploring}`,
+    `Impact: ${lead.notSure ? "Not sure yet — exploring ideas" : lead.impact || "Not specified"}`,
     `Timeline: ${lead.timeline}`,
     lead.package ? `Package: ${lead.package}` : "",
     "---",
