@@ -31,3 +31,7 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Wrangler local dev artifacts
+.wrangler/
+backend/.wrangler/

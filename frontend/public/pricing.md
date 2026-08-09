@@ -1,5 +1,15 @@
 # Viq Systems — Pricing
 
+## Quick Builds (under KES 15,000)
+
+Fixed-scope tools built fast, focused on one specific problem:
+
+- **Online menu / digital catalog page**: KES 8,000–15,000 | $80–$150
+- **Booking link (single service)**: KES 10,000–15,000 | $100–$150
+- **WhatsApp Business catalog + order flow**: KES 5,000–10,000 | $50–$100
+- **M-Pesa payment request page**: KES 10,000–15,000 | $100–$150
+- **Simple one-page site**: KES 10,000–15,000 | $100–$150
+
 ## Services
 
 ### Websites

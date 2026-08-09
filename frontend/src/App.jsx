@@ -10,10 +10,12 @@ import {
   navItems,
   packageLabels,
   pageMeta,
-  problemAreas,
   pricingTiers,
+  problemAreas,
+  quickBuilds,
   realWork,
   services,
+  smallWins,
   standards,
 } from './siteContent'
 import PrivacyPage from './pages/Privacy'
@@ -381,6 +383,41 @@ function ServicesPage() {
       </section>
 
       <SectionHeading
+        eyebrow="Quick builds"
+        title="Focused tools under KES 15,000"
+        description="One specific problem, solved fast. These are fixed-scope builds for getting a working tool live quickly."
+      />
+
+      <section className="wrap quick-builds-grid" data-reveal>
+        {quickBuilds.map((build) => (
+          <article key={build.title} className="service-card quick-build-card">
+            <div className={`service-visual service-visual--${build.gradient}`}>
+              <i className={build.icon} aria-hidden="true" />
+            </div>
+            <div className="service-body">
+              <div className="quick-build-price">
+                {build.price}
+                <small>{build.usd}</small>
+              </div>
+              <h3>{build.title}</h3>
+              <p>{build.description}</p>
+              <ul>
+                {build.bullets.map((bullet) => (
+                  <li key={bullet}>
+                    <i className="ti ti-check" aria-hidden="true" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <a className="btn btn-outline btn-block" href={build.href}>
+                Get a quote
+              </a>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <SectionHeading
         eyebrow="Pricing"
         title="How pricing works"
         description="Pricing follows scope and complexity. Simpler projects cost less. More custom work costs more."
@@ -479,6 +516,32 @@ function WorkPage() {
           </article>
         ))}
       </section>
+
+      {smallWins.length > 0 && (
+        <>
+          <SectionHeading
+            eyebrow="Small wins"
+            title="Smaller builds, shipped"
+            description="Quick builds and focused tools delivered for real clients."
+          />
+          <section className="wrap quick-builds-grid" data-reveal>
+            {smallWins.map((win) => (
+              <article key={win.title} className="service-card quick-build-card">
+                <div className="service-body">
+                  <span className="tag tag-live">Delivered</span>
+                  <h3>{win.title}</h3>
+                  <p className="case-label">
+                    <strong>{win.businessType}</strong> · {win.location}
+                  </p>
+                  <p>{win.what}</p>
+                  <p className="solution-line">Outcome: {win.outcome}</p>
+                  <small className="quick-build-date">{win.date}</small>
+                </div>
+              </article>
+            ))}
+          </section>
+        </>
+      )}
 
       <SectionHeading
         eyebrow="Concept examples"

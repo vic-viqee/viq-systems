@@ -333,6 +333,89 @@ export const pricingTiers = [
   },
 ]
 
+export const quickBuilds = [
+  {
+    icon: 'ti ti-notebook',
+    gradient: 'sand',
+    title: 'Online menu / digital catalog page',
+    price: 'KES 8,000–15,000',
+    usd: '$80–$150',
+    description:
+      'A clean mobile-first page that shows your menu, services, or products with prices — customers stop asking "what do you have?" and start ordering.',
+    bullets: [
+      'One page that loads fast on any phone',
+      'Your prices, photos, and offerings',
+      'WhatsApp or call button on every item',
+      'Small edits included after launch',
+    ],
+    href: '/contact.html?package=quick',
+  },
+  {
+    icon: 'ti ti-calendar-event',
+    gradient: 'teal',
+    title: 'Booking link (single service)',
+    price: 'KES 10,000–15,000',
+    usd: '$100–$150',
+    description:
+      'One link you send to clients. They pick a time, get a confirmation, and get reminders — fewer no-shows without extra admin.',
+    bullets: [
+      'Clients book their own slot',
+      'Automatic confirmation and reminders',
+      'A simple calendar view for you',
+      'Works fully from a phone',
+    ],
+    href: '/contact.html?package=quick',
+  },
+  {
+    icon: 'ti ti-brand-whatsapp',
+    gradient: 'forest',
+    title: 'WhatsApp Business catalog + order flow',
+    price: 'KES 5,000–10,000',
+    usd: '$50–$100',
+    description:
+      'A WhatsApp catalog and a simple order flow so customers browse, order, and confirm without message chaos.',
+    bullets: [
+      'Catalog set up for your products',
+      'Standardised order messages',
+      'Labels so no order gets lost',
+      'Handover so you can run it yourself',
+    ],
+    href: '/contact.html?package=quick',
+  },
+  {
+    icon: 'ti ti-wallet',
+    gradient: 'amber',
+    title: 'M-Pesa payment request page',
+    price: 'KES 10,000–15,000',
+    usd: '$100–$150',
+    description:
+      'A single "Pay now" page that sends an M-Pesa STK push to the customer\u2019s phone and confirms the payment automatically.',
+    bullets: [
+      'Customer taps and pays on their phone',
+      'STK push sent straight to their number',
+      'Automatic payment confirmation',
+      'No more chasing screenshots',
+    ],
+    href: '/contact.html?package=quick',
+  },
+  {
+    icon: 'ti ti-world',
+    gradient: 'slate',
+    title: 'Simple one-page site',
+    price: 'KES 10,000–15,000',
+    usd: '$100–$150',
+    description:
+      'A single polished page that tells a customer who you are, what you offer, and how to reach you.',
+    bullets: [
+      'One page, built around your branding',
+      'Mobile-first and fast',
+      'Contact form or WhatsApp button',
+      'Basic SEO setup',
+    ],
+    href: '/contact.html?package=quick',
+  },
+]
+
 export const standards = [
   {
     icon: 'ti ti-device-mobile',
@@ -375,7 +458,7 @@ export const faqItems = [
   {
     question: 'How much does a custom website cost in Kenya?',
     answer:
-      'A custom website from Viq Systems costs KES 30,000–120,000 depending on complexity. A simple landing page starts at KES 15,000. A business website with 3–5 pages is KES 30,000–60,000. Pricing is per project, not per hour.',
+      'A custom website from Viq Systems costs KES 30,000–120,000 depending on complexity. A simple landing page starts at KES 15,000. A business website with 3–5 pages is KES 30,000–60,000. Focused quick builds (online menus, booking links, simple one-page sites) start at KES 8,000. Pricing is per project, not per hour.',
   },
   {
     question: 'Where is Viq Systems located?',
@@ -413,6 +496,10 @@ export const faqItems = [
       'Yes. Ongoing support is part of the way this site is positioned, because the work is only useful if it keeps working after handoff.',
   },
 ]
+
+// Add one entry per real completed job. Keep honest — only real delivered work.
+// Structure: { title, businessType, location, what, outcome, date }
+export const smallWins = []
 
 export const fluxPayCaseStudy = {
   slug: 'fluxpay',
@@ -617,4 +704,5 @@ export const packageLabels = {
   starter: 'Starter package selected',
   business: 'Business package selected',
   advanced: 'Advanced package selected',
+  quick: 'Quick build selected',
 }

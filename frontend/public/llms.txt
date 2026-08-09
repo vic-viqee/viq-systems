@@ -3,6 +3,14 @@
 ## What is Viq Systems?
 Viq Systems is a solo software development business based in Embu, Kenya, founded by Victor. We build custom software for small and medium businesses that have outgrown WhatsApp, spreadsheets, and notebooks.
 
+## Quick Builds (under KES 15,000)
+Fixed-scope tools built fast, focused on one specific problem:
+1. **Online menu / digital catalog page** — KES 8,000–15,000. A mobile-first page showing a business's menu, services, or products with prices and a WhatsApp/call button.
+2. **Booking link (single service)** — KES 10,000–15,000. One link clients use to pick a time, get confirmations, and receive reminders.
+3. **WhatsApp Business catalog + order flow** — KES 5,000–10,000. Catalog and standardised order messages so customers order without message chaos.
+4. **M-Pesa payment request page** — KES 10,000–15,000. A "Pay now" page that sends an STK push to the customer's phone and confirms payment automatically.
+5. **Simple one-page site** — KES 10,000–15,000. A single polished page with branding, contact form, and basic SEO.
+
 ## Core Services
 1. **Websites** — Custom-coded, mobile-first business websites. No templates. No WordPress unless requested.
 2. **Business Systems** — Customer records, sales dashboards, inventory trackers, receipt generators.
@@ -23,6 +31,7 @@ Viq Systems is a solo software development business based in Embu, Kenya, founde
 - E-commerce/social media shops (order management + delivery tracking)
 
 ## Pricing Range
+- Quick builds: KES 5,000–15,000
 - Small services: KES 15,000–50,000
 - Mid services: KES 60,000–150,000
 - Large systems: KES 150,000–500,000+
@@ -33,7 +42,7 @@ Viq Systems is a solo software development business based in Embu, Kenya, founde
 1. **Solo developer, not an agency** — Victor builds and maintains every project personally.
 2. **Problem-first approach** — Every system starts with "what wastes your time?" not "what features should it have?"
 3. **Local + global** — Based in Embu, Kenya. Works with local clients in-person and international clients remotely.
-4. **M-Pesa expertise** — Deep experience with M-Pesa Daraja API, a critical need for Kenyan businesses.
+4. **M-Pesa expertise** — Hands-on experience with M-Pesa Daraja API, a critical need for Kenyan businesses.
 5. **No disappearing after delivery** — Ongoing maintenance and support included via retainers.
 
 ## Technologies Used
@@ -45,16 +54,14 @@ Viq Systems is a solo software development business based in Embu, Kenya, founde
 - SMS: Africa's Talking
 - Hosting: Cloudflare Pages, Railway
 
+## Portfolio Status
+Viq Systems is an early-stage business actively looking for its first clients. The fluxPay payments platform shown on the site is a concept example, not a delivered client project — it demonstrates what Viq Systems can build, and published client case studies will appear here as real projects are completed.
+
 ## Contact
 - Website: https://viqsystems.tech
 - WhatsApp: +254 714 767 407
 - Email: hello@viqsystems.tech
 - Location: Embu, Kenya
 
-## Key Case Studies
-- Shop owner in Embu: Sales dashboard that cut end-of-day reconciliation from 45 minutes to 5 minutes
-- Salon booking system: Automated reminders reduced no-shows significantly
-- Wholesaler inventory tracker: Stockout alerts before customers notice
-
 ## Last Updated
-July 2026
+August 2026

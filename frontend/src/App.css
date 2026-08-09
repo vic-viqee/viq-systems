@@ -622,6 +622,55 @@
   gap: 1.35rem;
 }
 
+.quick-builds-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.quick-builds-grid .service-card {
+  grid-template-columns: 1fr;
+  height: 100%;
+}
+
+.quick-builds-grid .service-visual {
+  min-height: 8.5rem;
+  font-size: 2.4rem;
+}
+
+.quick-builds-grid .service-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-builds-grid .service-body .btn {
+  margin-top: auto;
+}
+
+.quick-build-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--teal);
+  margin-top: 0.4rem;
+}
+
+.quick-build-price small {
+  font-size: 0.74rem;
+  color: var(--muted-light);
+}
+
+.quick-build-date {
+  display: block;
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted-light);
+}
+
 .service-card {
   display: grid;
   grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.6fr);
@@ -1402,6 +1451,7 @@
   .grid-3,
   .grid-4,
   .pricing-grid,
+  .quick-builds-grid,
   .values-grid,
   .field-grid,
   .grid-2 {
