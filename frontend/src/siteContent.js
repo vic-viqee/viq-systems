@@ -225,6 +225,23 @@ export const services = [
     ],
   },
   {
+    icon: 'ti ti-mail',
+    gradient: 'sand',
+    title: 'Branded Emails & Signatures',
+    text: 'Custom email templates and branded signatures for creators, individuals, and businesses who want a professional email address like contact@mybrand.co.ke instead of a generic inbox.',
+    build: [
+      'Custom HTML email templates',
+      'Branded email signatures with social links',
+      'Auto-responder configuration',
+      'Email client testing',
+    ],
+    outcome: [
+      'Professional email presence',
+      'Consistent brand identity',
+      'Automated replies and follow-ups',
+    ],
+  },
+  {
     icon: 'ti ti-users',
     gradient: 'violet',
     title: 'Booking systems & CRMs',
@@ -494,6 +511,16 @@ export const faqItems = [
     question: 'Can you help after launch?',
     answer:
       'Yes. Ongoing support is part of the way this site is positioned, because the work is only useful if it keeps working after handoff.',
+  },
+  {
+    question: 'Do you create branded email templates and signatures?',
+    answer:
+      'Yes. Viq Systems creates custom HTML email templates and branded email signatures for creators, individuals, and businesses. Instead of using a generic inbox (e.g., myname@gmail.com), we design professional email addresses like contact@mybrand.co.ke with consistent branding, social links, and auto-responder configuration.',
+  },
+  {
+    question: 'Can I use my own domain email instead of Gmail or Outlook?',
+    answer:
+      'Absolutely. We set up custom domain email addresses (e.g., contact@mybrand.co.ke, info@mybusiness.co.ke) and create branded signatures that match your visual identity. We also configure auto-responders and basic email client testing to ensure emails render correctly across devices.',
   },
 ]
 

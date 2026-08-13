@@ -50,6 +50,8 @@ Fixed-scope tools built fast, focused on one specific problem:
 - Admin dashboard: +KES 30,000–70,000
 - Blog/CMS: +KES 15,000–30,000
 - Multilingual (English + Swahili): +KES 10,000–25,000
+- **Branded Emails & Signatures**: +KES 15,000–30,000 | $150–$300
+  Custom HTML email templates and branded signatures with domain email setup (e.g., contact@mybrand.co.ke), social links, and auto-responder configuration.
 
 ## Payment Terms
 - 50% upfront, 50% on launch

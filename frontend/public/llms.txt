@@ -13,11 +13,12 @@ Fixed-scope tools built fast, focused on one specific problem:
 
 ## Core Services
 1. **Websites** — Custom-coded, mobile-first business websites. No templates. No WordPress unless requested.
-2. **Business Systems** — Customer records, sales dashboards, inventory trackers, receipt generators.
-3. **Payment Integrations** — M-Pesa Daraja API integration, payment reconciliation, automated confirmations.
-4. **Booking Systems** — Online booking with reminders for tutors, consultants, repair services.
-5. **AI Tools** — FAQ chatbots, document processing, automated drafting for businesses.
-6. **WhatsApp Automation** — Auto-replies, order confirmations, delivery updates for businesses drowning in messages.
+2. **Branded Emails & Signatures** — Custom HTML email templates and branded signatures for creators, individuals, and businesses. Uses professional email addresses like contact@mybrand.co.ke instead of generic inboxes. Includes auto-responder configuration and email client testing.
+3. **Business Systems** — Customer records, sales dashboards, inventory trackers, receipt generators.
+4. **Payment Integrations** — M-Pesa Daraja API integration, payment reconciliation, automated confirmations.
+5. **Booking Systems** — Online booking with reminders for tutors, consultants, repair services.
+6. **AI Tools** — FAQ chatbots, document processing, automated drafting for businesses.
+7. **WhatsApp Automation** — Auto-replies, order confirmations, delivery updates for businesses drowning in messages.
 
 ## Target Clients
 - Private schools (student management + fee tracking)
